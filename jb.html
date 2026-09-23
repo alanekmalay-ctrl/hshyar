@@ -3,38 +3,28 @@
 <head>
     <meta charset="utf-8">
     <title>HSHYAR PS4 Jailbreak Host</title>
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: white;
-            font-family: sans-serif;
-            text-align: center;
-            margin-top: 20vh;
-        }
-        h1 { color: #0070d1; }
-    </style>
+    <script src="exploit.js"></script>
 </head>
 <body>
-    <h1>HSHYAR PS4 Jailbreak Host</h1>
-    <h2 id="msgs">Loading GoldHEN Payload...</h2>
+    <div id="loading" style="color:white; text-align:center; margin-top:20vh;">
+        <h1>HSHYAR PS4 Jailbreak Host</h1>
+        <h2>Loading Jailbreak & GoldHEN...</h2>
+    </div>
     <script>
-        window.agb = {};
-        // Core handler to fetch and execute goldhen.bin
-        setTimeout(function() {
-            var req = new XMLHttpRequest();
-            req.open('GET', 'goldhen.bin', true);
-            req.responseType = 'arraybuffer';
-            req.onload = function () {
-                if (req.status === 200) {
-                    var payload = req.response;
-                    document.getElementById("msgs").innerHTML = "GoldHEN Loaded Successfully! Executing...";
-                    // Trigger payload execution logic here
-                } else {
-                    document.getElementById("msgs").innerHTML = "Error: goldhen.bin not found!";
-                }
-            };
-            req.send();
-        }, 1000);
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                // Automatic trigger for payload execution
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'goldhen.bin', true);
+                xhr.responseType = 'arraybuffer';
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        document.getElementById('loading').innerHTML = "<h1>GoldHEN Injected Successfully!</h1>";
+                    }
+                };
+                xhr.send();
+            }, 1000);
+        });
     </script>
 </body>
 </html>
