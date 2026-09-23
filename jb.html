@@ -2,29 +2,35 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>HSHYAR PS4 Jailbreak Host</title>
-    <script src="exploit.js"></script>
+    <title>HSHYAR PS4 Jailbreak</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 25vh;
+        }
+        h1 { color: #0070d1; }
+    </style>
 </head>
 <body>
-    <div id="loading" style="color:white; text-align:center; margin-top:20vh;">
-        <h1>HSHYAR PS4 Jailbreak Host</h1>
-        <h2>Loading Jailbreak & GoldHEN...</h2>
-    </div>
+    <h1>HSHYAR PS4 Jailbreak Host</h1>
+    <h2 id="status">Loading GoldHEN...</h2>
     <script>
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                // Automatic trigger for payload execution
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'goldhen.bin', true);
-                xhr.responseType = 'arraybuffer';
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        document.getElementById('loading').innerHTML = "<h1>GoldHEN Injected Successfully!</h1>";
-                    }
-                };
-                xhr.send();
-            }, 1000);
-        });
+        setTimeout(function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'goldhen.bin', true);
+            xhr.responseType = 'arraybuffer';
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById('status').innerHTML = "GoldHEN Loaded Successfully!";
+                } else {
+                    document.getElementById('status').innerHTML = "Error loading payload file!";
+                }
+            };
+            xhr.send();
+        }, 1000);
     </script>
 </body>
 </html>
