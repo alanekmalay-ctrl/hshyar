@@ -3,11 +3,28 @@
 <head>
     <meta charset="utf-8">
     <title>HSHYAR PS4 Jailbreak</title>
-    <script>
-        window.location.replace("https://ps4.tarunas.dev/index.html");
-    </script>
+    <style>
+        body { background-color: #1a1a1a; color: white; font-family: sans-serif; text-align: center; margin-top: 25vh; }
+        h1 { color: #0070d1; }
+    </style>
 </head>
 <body>
-    <h2 style="color:white; text-align:center; margin-top:30vh;">Redirecting to HSHYAR Host...</h2>
+    <h1>HSHYAR PS4 Jailbreak Host</h1>
+    <h2 id="msgs">Initializing Jailbreak...</h2>
+    <script>
+        setTimeout(function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'goldhen.bin', true);
+            xhr.responseType = 'arraybuffer';
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById("msgs").innerHTML = "GoldHEN Loaded Successfully!";
+                } else {
+                    document.getElementById("msgs").innerHTML = "Payload Error!";
+                }
+            };
+            xhr.send();
+        }, 1000);
+    </script>
 </body>
 </html>
