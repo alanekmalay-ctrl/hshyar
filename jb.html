@@ -2,40 +2,34 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>PS4 GoldHEN Exploit Host</title>
+    <title>PS4 GoldHEN Exploit</title>
     <script>
-        function load_exploit() {
-            document.getElementById('msgs').innerHTML = "Initializing Exploit...";
-            setTimeout(function() {
-                document.getElementById('msgs').innerHTML = "Loading GoldHEN Payload...";
-                // Load script or payload routines here
-            }, 1000);
+        function DLProgress(e){
+            parent.ScrMsg(Math.round(e.loaded / e.total * 100) + "%");
         }
-        window.onload = load_exploit;
+        function impl() {
+            history.pushState({}, '', '');
+            setTimeout(function() {
+                location.reload();
+            }, 3000);
+        }
     </script>
     <style>
         body {
-            background-color: #0b0f19;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            font-family: monospace;
             text-align: center;
-            padding-top: 15vh;
+            padding-top: 20vh;
         }
         #msgs {
-            font-size: 28px;
-            color: #00d2ff;
+            font-size: 30px;
+            color: #00ffcc;
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-        }
-        .sub-text {
-            color: #888;
-            margin-top: 15px;
-            font-size: 16px;
         }
     </style>
 </head>
-<body>
-    <div id="msgs">Preparing Environment...</div>
-    <div class="sub-text">HSHYAR Host - PS4 Jailbreak Portal</div>
+<body onload="impl()">
+    <div id="msgs">Loading GoldHEN... Please wait...</div>
 </body>
 </html>
