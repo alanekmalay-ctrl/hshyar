@@ -2,47 +2,26 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>HSHYAR PS4 Jailbreak Host</title>
-    <style>
-        body {
-            background-color: #101214;
-            color: #ffffff;
-            font-family: sans-serif;
-            text-align: center;
-            margin-top: 20vh;
-        }
-        h1 { color: #0070d1; }
-        .status { font-size: 20px; color: #00ffcc; margin-top: 20px; }
-    </style>
+    <title>HSHYAR Host</title>
 </head>
 <body>
-    <h1>HSHYAR PS4 Jailbreak Host</h1>
-    <div id="status" class="status">Initializing WebKit Exploit...</div>
+    <h1>HSHYAR Host</h1>
+    <div id="status">Checking goldhen.bin...</div>
 
     <script>
-        function loadPayload() {
-            document.getElementById("status").innerHTML = "Triggering Kernel Exploit & Injecting GoldHEN...";
-            var req = new XMLHttpRequest();
-            req.open('GET', 'goldhen.bin', true);
-            req.responseType = 'arraybuffer';
-            req.onload = function () {
-                if (req.status === 200) {
-                    document.getElementById("status").innerHTML = "GoldHEN Executed! Check System Settings.";
-                } else {
-                    document.getElementById("status").innerHTML = "Error: goldhen.bin not found!";
+        fetch("goldhen.bin")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("goldhen.bin not found");
                 }
-            };
-            req.send();
-        }
 
-        // Automatic execution logic for PS4 browser memory allocation
-        setTimeout(function() {
-            try {
-                loadPayload();
-            } catch(e) {
-                document.getElementById("status").innerHTML = "Exploit Failed. Please reload page.";
-            }
-        }, 1500);
+                document.getElementById("status").textContent =
+                    "goldhen.bin was found successfully.";
+            })
+            .catch(error => {
+                document.getElementById("status").textContent =
+                    "Error: " + error.message;
+            });
     </script>
 </body>
 </html>
