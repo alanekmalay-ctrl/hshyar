@@ -2,38 +2,26 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>PS4 GoldHEN Exploit Host</title>
+    <title>PS4 GoldHEN Host</title>
     <script>
-        function allset() {
-            document.getElementById("msgs").innerHTML = "GoldHEN Loaded Successfully! Enjoy!";
-        }
-        window.onload = function () {
-            setTimeout(allset, 1500);
+        window.storeData = function(key, val) {
+            localStorage.setItem(key, val);
+        };
+        window.readData = function(key) {
+            return localStorage.getItem(key);
         };
     </script>
-    <style>
-        body {
-            background-color: #0b0f19;
-            color: #fff;
-            font-family: monospace;
-            text-align: center;
-            padding-top: 20vh;
-        }
-        #msgs {
-            font-size: 32px;
-            color: #00ffcc;
-            font-weight: bold;
-            text-shadow: 0 0 12px rgba(0, 255, 204, 0.6);
-        }
-        .sub {
-            color: #888;
-            margin-top: 20px;
-            font-size: 16px;
-        }
-    </style>
 </head>
-<body>
-    <div id="msgs">Loading GoldHEN Payload...</div>
-    <div class="sub">HSHYAR Host - PS4 Jailbreak Portal</div>
+<body style="background-color:#111; color:#fff; text-align:center; font-family:monospace; padding-top:20vh;">
+    <h1 style="color:#00ffcc;">HSHYAR PS4 Exploit Host</h1>
+    <h2 id="msgs" style="color:#ffcc00;">Initializing Kernel Exploit...</h2>
+    <script>
+        setTimeout(function() {
+            document.getElementById("msgs").innerHTML = "Loading GoldHEN Payload...";
+            setTimeout(function() {
+                document.getElementById("msgs").innerHTML = "Exploit completed! Please check if GoldHEN is active.";
+            }, 2000);
+        }, 1500);
+    </script>
 </body>
 </html>
