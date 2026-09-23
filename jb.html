@@ -2,34 +2,38 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>PS4 GoldHEN Exploit</title>
+    <title>PS4 GoldHEN Exploit Host</title>
     <script>
-        function DLProgress(e){
-            parent.ScrMsg(Math.round(e.loaded / e.total * 100) + "%");
+        function allset() {
+            document.getElementById("msgs").innerHTML = "GoldHEN Loaded Successfully! Enjoy!";
         }
-        function impl() {
-            history.pushState({}, '', '');
-            setTimeout(function() {
-                location.reload();
-            }, 3000);
-        }
+        window.onload = function () {
+            setTimeout(allset, 1500);
+        };
     </script>
     <style>
         body {
-            background-color: #111;
+            background-color: #0b0f19;
             color: #fff;
             font-family: monospace;
             text-align: center;
             padding-top: 20vh;
         }
         #msgs {
-            font-size: 30px;
+            font-size: 32px;
             color: #00ffcc;
             font-weight: bold;
+            text-shadow: 0 0 12px rgba(0, 255, 204, 0.6);
+        }
+        .sub {
+            color: #888;
+            margin-top: 20px;
+            font-size: 16px;
         }
     </style>
 </head>
-<body onload="impl()">
-    <div id="msgs">Loading GoldHEN... Please wait...</div>
+<body>
+    <div id="msgs">Loading GoldHEN Payload...</div>
+    <div class="sub">HSHYAR Host - PS4 Jailbreak Portal</div>
 </body>
 </html>
