@@ -2,25 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>HSHYAR PS4 GoldHEN Host</title>
+    <title>HSHYAR PS4 GoldHEN Jailbreak Host</title>
     <script>
         function DLProgress(e){
-            parent.ScrMsg(Math.round(e.loaded / e.total * 100) + "%");
+            document.getElementById("msgs").innerHTML = "Loading Exploit... " + Math.round(e.loaded / e.total * 100) + "%";
         }
         function allset() {
             document.getElementById("msgs").innerHTML = "GoldHEN Loaded Successfully!";
-        }
-        window.onload = function () {
-            history.pushState({}, '', '');
             setTimeout(function() {
-                document.getElementById("msgs").innerHTML = "Initializing Exploit Payload...";
-                setTimeout(allset, 1500);
-            }, 1000);
-        };
+                window.close();
+            }, 2000);
+        }
     </script>
+    <script src="exploit.js"></script>
 </head>
 <body style="background-color:#0b0f19; color:#fff; font-family:monospace; text-align:center; padding-top:20vh;">
     <h1 style="color:#00d2ff;">HSHYAR PS4 Jailbreak Host</h1>
-    <h2 id="msgs" style="color:#ffcc00;">Loading Environment...</h2>
+    <h2 id="msgs" style="color:#ffcc00;">Initializing Kernel Exploit...</h2>
 </body>
 </html>
