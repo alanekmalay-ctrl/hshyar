@@ -2,26 +2,55 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>HSHYAR Host</title>
+    <title>HSHYAR PS4 Jailbreak</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 20vh;
+        }
+        .btn {
+            background-color: #0082d1;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>HSHYAR Host</h1>
-    <div id="status">Checking goldhen.bin...</div>
+    <h1>HSHYAR PS4 Host</h1>
+    <p id="status">بۆ کارکرنا GoldHEN دۆگمەیا خوارێ بگرە:</p>
+    <br>
+    <button class="btn" onclick="loadGoldHen()">Load GoldHEN</button>
 
+    <script src="exploit.js"></script>
     <script>
-        fetch("goldhen.bin")
+        function loadGoldHen() {
+            document.getElementById("status").innerHTML = "Loading GoldHEN... تکایە بڕاوەستە.";
+            
+            // ئەڤ کۆدە ڕاستەوخۆ فایلا goldhen.bin ژ حسابا تە دەشۆخینیت
+            fetch("goldhen.bin")
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("goldhen.bin not found");
+                    throw new Error("فایلا goldhen.bin نەهاتە دۆزینەوە!");
                 }
-
-                document.getElementById("status").textContent =
-                    "goldhen.bin was found successfully.";
+                return response.arrayBuffer();
+            })
+            .then(buffer => {
+                document.getElementById("status").innerHTML = "GoldHEN b سەرکەفتن هاتە بارکرن!";
+                if (typeof runExploit === "function") {
+                    runExploit(buffer);
+                }
             })
             .catch(error => {
-                document.getElementById("status").textContent =
-                    "Error: " + error.message;
+                document.getElementById("status").innerHTML = "خەڵەتیا: " + error.message;
             });
+        }
     </script>
 </body>
 </html>
